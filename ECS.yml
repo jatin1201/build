@@ -113,6 +113,9 @@ Parameters:
     MaxValue: 1800
 Conditions:
   HasLoadBalancerHttps: !Equals [!Ref LoadBalancerHttps, 'true']
+  HasLoadBalancerPath: !Not [!Equals [!Ref LoadBalancerPath, '']]
+  HasLoadBalancerHostPattern: !Not [!Equals [!Ref LoadBalancerHostPattern, '']]
+  HasAlertTopic: !Not [!Equals [!Ref ParentAlertStack, '']]
   HasZone: !Not [!Equals [!Ref ParentZoneStack, '']]
   HasAutoScaling: !Equals [!Ref AutoScaling, 'true']
 Resources:
